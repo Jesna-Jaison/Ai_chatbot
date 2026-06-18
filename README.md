@@ -31,15 +31,15 @@ It uses TF-IDF + cosine similarity for retrieval and Google Gemini API for gener
 ## 📁 Project Structure
 
 ```
-PDF-Chatbot/
+Ai_chatbot/
 │
-├── app.py                # Streamlit chatbot app
-├── preprocess.py         # PDF → text → chunk generator
-├── chunks.pkl            # Saved text chunks
-├── Recipe-Book.pdf       # Input PDF file
-├── .env                  # API key file
-└── README.md
-```
+├── app.py # Streamlit chatbot app
+├── pdf_to_chunks.py # PDF processing + chunk creation
+├── chunks.pkl # Saved text chunks (generated file)
+├── Recipe-Book.pdf # Input PDF file
+├── requirements.txt # Dependencies
+├── .gitignore # Ignored files setup
+└── README.md # Project documentation
 
 ---
 
@@ -47,20 +47,23 @@ PDF-Chatbot/
 
 ### Clone the repository
 ```bash
-git clone https://github.com/your-username/your-repo.git
-cd your-repo
+git clone https://github.com/Jesna-Jaison/Ai_chatbot
+cd Ai_chatbot
 ```
+## ⚙️ Installation & Setup
 
-### Create virtual environment (optional)
+### (Optional) Create virtual environment
 ```bash
 python -m venv venv
 venv\Scripts\activate   # Windows
 # source venv/bin/activate  # Mac/Linux
 ```
 
+---
+
 ### Install dependencies
 ```bash
-pip install streamlit google-genai scikit-learn python-dotenv PyPDF2
+pip install -r requirements.txt
 ```
 
 ---
@@ -69,7 +72,7 @@ pip install streamlit google-genai scikit-learn python-dotenv PyPDF2
 
 Create a `.env` file in the root folder:
 
-```
+```env
 GOOGLE_API_KEY=your_google_gemini_api_key_here
 ```
 
@@ -77,12 +80,14 @@ GOOGLE_API_KEY=your_google_gemini_api_key_here
 
 ## ▶️ How to Run
 
-### Step 1: Generate chunks
+### Step 1: Generate chunks from PDF
 ```bash
-python preprocess.py
+python pdf_to_chunks.py
 ```
 
-### Step 2: Run app
+---
+
+### Step 2: Run the Streamlit app
 ```bash
 streamlit run app.py
 ```
